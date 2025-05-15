@@ -18,6 +18,8 @@ namespace CSAPATSORSOLO_EGBFKB_SZASZVARI
                 name: "default",
                 pattern: "{controller}/{action}/{id?}");
 
+            app.UseCors(x => x.AllowCredentials().AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:5090"));
+
             app.Run();
         }
     }
