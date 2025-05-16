@@ -1,6 +1,7 @@
 ﻿using CSAPATSORSOLO_EGBFKB_SZASZVARI.Data;
 using CSAPATSORSOLO_EGBFKB_SZASZVARI.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 namespace CSAPATSORSOLO_EGBFKB_SZASZVARI.Controller
 {
@@ -21,19 +22,33 @@ namespace CSAPATSORSOLO_EGBFKB_SZASZVARI.Controller
         }
 
         [HttpPost]
-        public ActionResult<Member> CreateMember([FromBody] Member member)
+        public ActionResult<Member> CreateMember([FromBody] string name, int age)
         {
-            if (member.Age <= 8)
+            if (age <= 8)
             {
                 return BadRequest("Too young! Should be older than 8!");
             }
+            Member member = new Member();
+            member.Name = name;
+            member.Age = age;
             this.repo.Create(member);
             return member;
         }
 
-        public static List<List<Member>> Distribute(List<Member> Members, int numTeams)
+        [HttpPost("Create")]
+        public void CreateMembers(string input)
         {
-            var sorted = Members.OrderBy(p => p.Age).ToList();
+            string[] inputs = input.Trim().Split(';');
+            foreach (var item in inputs)
+            {
+                CreateMember(item.Split(',')[0], int.Parse(item.Split(',')[1]));
+            }
+        }
+
+        [HttpPost("Distribute")]
+        public List<List<Member>> Distribute(int numTeams)
+        {
+            var sorted = this.repo.Read().OrderBy(p => p.Age).ToList();
             var teams = new List<List<Member>>();
 
             for (int i = 0; i < numTeams; i++)
