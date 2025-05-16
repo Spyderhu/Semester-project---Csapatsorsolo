@@ -30,5 +30,33 @@ namespace CSAPATSORSOLO_EGBFKB_SZASZVARI.Controller
             this.repo.Create(member);
             return member;
         }
+
+        public static List<List<Member>> Distribute(List<Member> Members, int numTeams)
+        {
+            var sorted = Members.OrderBy(p => p.Age).ToList();
+            var teams = new List<List<Member>>();
+
+            for (int i = 0; i < numTeams; i++)
+                teams.Add(new List<Member>());
+
+            bool leftToRight = true;
+
+            for (int i = 0; i < sorted.Count; i += numTeams)
+            {
+                var group = sorted.Skip(i).Take(numTeams).ToList();
+                if (!leftToRight) group.Reverse();
+
+                for (int j = 0; j < group.Count; j++)
+                {
+                    int target = leftToRight ? j : (numTeams - 1 - j);
+                    teams[target].Add(group[j]);
+                }
+
+                leftToRight = !leftToRight;
+            }
+
+            return teams;
+        }
+
     }
 }
