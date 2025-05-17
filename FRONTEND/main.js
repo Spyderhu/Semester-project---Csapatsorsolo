@@ -31,7 +31,7 @@ function addPlayer(){
 }
 
 function generateCards(){
-    fetch('http://localhost:5500/api/Teams/', {
+    fetch('http://localhost:5090/csapat', {
         method: 'POST',
         headers: { 'Content-Type' : 'application/json', },
         body: JSON.stringify(teamGeneratorOBJ)
