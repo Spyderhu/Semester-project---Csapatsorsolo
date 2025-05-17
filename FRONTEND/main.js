@@ -47,6 +47,7 @@ function generateCards(){
 }
 
 function createTeams(){
+    document.getElementById("cards-container").innerHTML = ""
     let teamNumber = document.querySelector("#number-of-teams-container input").value
     teamGeneratorOBJ.numberOfTeams = teamNumber
 
