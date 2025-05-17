@@ -23,6 +23,16 @@ body {
     gap: 10px;
 }
 
+#addBtn{
+    background-color: grey;
+    color: black;
+}
+
+#addBtn:hover{
+    background-color: black;
+    color: white;
+}
+
 #players-displayer p{
     background-color: #E4EFE7;
     justify-content: center;
