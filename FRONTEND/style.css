@@ -29,7 +29,7 @@ body {
 }
 
 #addBtn:hover{
-    background-color: black;
+    background-color: darkred;
     color: white;
 }
 
