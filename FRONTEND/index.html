@@ -7,23 +7,55 @@
     <title>Csapatsorsoló</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Csapatsorsoló</h1>
+    <h1 style="text-align: center; background-color: darkred; color: white;">Csapatsorsoló</h1>
     <hr>
-    <div class="container">
+    <div class="container" id="addplayercontainer">
         <div class="row">
             <div class="col-6 text-center">
-                <textarea name="" id="nameandage" cols="24" rows="1"></textarea>
+                <input type="text" placeholder="Name" class="rounded form-control" onkeyup="validateForm()">
             </div>
             <div class="col-6 text-center">
-                <input type="number" name="" id="numofteams" value="1">
+                <input type="number" name="" class="rounded form-control" onchange="validateForm()" onkeyup="validateForm()" value="1" min="1">
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button disabled onclick="addPlayer()" style="background-color: darkred; color: white;">Add players</button>
             </div>
         </div>
     </div>
-    
+
     <hr>
+
+    <div>
+        <h3>The players:</h3>
+        <div id="playersdisplayer">
+
+        </div>
+    </div>
+
+    <hr>
+
     <div class="row">
         <div class="col-12 text-center">
-            <button id="genbtn">Generate</button>
+            <h5>Number of teams:</h5>
+        </div>
+    </div>
+    <div id="numofteamscontainer" class="row"></div>
+        <div class="col-12 text-center">
+            <input type="number" min="1" placeholder="Count of teams" value="1">
+        </div>
+        <div class="col-12 text-center">
+            <button onclick="createTeams()" class="btn" disabled>Create teams</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div>
+        <div id="cards-container">
+
         </div>
     </div>
     
