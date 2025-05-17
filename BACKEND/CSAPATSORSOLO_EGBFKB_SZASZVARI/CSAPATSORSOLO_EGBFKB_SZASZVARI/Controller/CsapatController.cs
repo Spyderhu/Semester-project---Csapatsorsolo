@@ -19,7 +19,6 @@ namespace CSAPATSORSOLO_EGBFKB_SZASZVARI.Controller
         [HttpPost]
         public IEnumerable<IEnumerable<Member>> Addplayer([FromBody] TeamGenerator tg)
         {
-            //Response-ba vissza is adja a generált csapatokat
             return repo.GenerateTeams(tg);
         }
 

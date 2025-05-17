@@ -1,5 +1,5 @@
 let teamGeneratorOBJ = {
-    players : [],
+    members : [],
     numberOfTeams: 1
 }
 
@@ -11,15 +11,15 @@ let displayer = document.getElementById("players-displayer")
 function displayPlayers(){
     displayer.innerHTML = ""
 
-    for (let i = 0; i < teamGeneratorOBJ.players.length; i++) {
+    for (let i = 0; i < teamGeneratorOBJ.members.length; i++) {
         let p = document.createElement("p")
-        p.innerHTML = teamGeneratorOBJ.players[i].name + " " + teamGeneratorOBJ.players[i].age 
+        p.innerHTML = teamGeneratorOBJ.members[i].name + " " + teamGeneratorOBJ.members[i].age 
         displayer.appendChild(p)
     }
 }
 
 function addPlayer(){
-    teamGeneratorOBJ.players.push({name: playerInputs[0].value, age: playerInputs[1].value})
+    teamGeneratorOBJ.members.push({name: playerInputs[0].value, age: playerInputs[1].value})
     for (let i = 0; i < playerInputs.length; i++) {
         playerInputs[i].value = ""
     }
@@ -43,13 +43,14 @@ function generateCards(){
             cardDisplayer.appendChild(createCard("Team " + (i+1), data[i]))
         }
     });
+    console.log(JSON.stringify(teamGeneratorOBJ))
 }
 
 function createTeams(){
     let teamNumber = document.querySelector("#number-of-teams-container input").value
     teamGeneratorOBJ.numberOfTeams = teamNumber
 
-    if(teamNumber > teamGeneratorOBJ.players.length){
+    if(teamNumber > teamGeneratorOBJ.members.length){
         alert("A csapatok száma nem haladhatja meg a játékosok számát!")
     }
     else{
