@@ -1,0 +1,71 @@
+body {
+    background-color: #FAF1E6;
+}
+
+#add-player-container {
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px
+}
+
+#players-displayer {
+    background-color: #FDFAF6;
+    height: 100%;
+    min-height: 100px;
+    border-radius: 25px;
+    margin: 10px;
+    border-style: solid;
+    border-width: 2px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#players-displayer p{
+    background-color: #E4EFE7;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    align-self: flex-start;
+    padding: 4px;
+}
+
+
+#number-of-teams-container {
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#number-of-teams-container input{
+    width: 100px;
+    text-align: center;
+}
+
+
+#cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px;
+}
+
+.header {
+    padding: 25px;
+    text-align: center;
+    background-color: darkred;
+    color: white;
+    font-size: 30px;
+    border-radius: 15px;
+    border-bottom-style: solid;
+    border-width: 5px;
+    border-color: darkred;
+}
+
+h3{
+    margin-left: 15px;
+}

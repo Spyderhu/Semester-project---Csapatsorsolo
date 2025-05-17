@@ -4,20 +4,25 @@ namespace CSAPATSORSOLO_EGBFKB_SZASZVARI.Data
 {
     public class CsapatRepository : ICsapatRepository
     {
-        List<Member> members;
         public CsapatRepository()
         {
-            members = new List<Member>();
+     
         }
 
-        public void Create(Member member)
+        public IEnumerable<IEnumerable<Member>> GenerateTeams(TeamGenerator tg)
         {
-            this.members.Add(member);
-        }
-
-        public IEnumerable<Member> Read()
-        {
-            return this.members;
+            List<List<Member>> teams = new List<List<Member>>();
+            for (int i = 0; i < tg.NumberOfTeams; i++)
+            {
+                List<Member> team = new List<Member>();
+                teams.Add(team);
+            }
+            tg.Members = tg.Members.OrderBy(x => x.Age).ToList();
+            for (int i = 0; i < tg.Members.Count; i++)
+            {
+                teams[i % tg.NumberOfTeams].Add(tg.Members[i]);
+            }
+            return teams;
         }
     }
 }
