@@ -14,14 +14,38 @@ namespace CSAPATSORSOLO_EGBFKB_SZASZVARI.Data
             List<List<Member>> teams = new List<List<Member>>();
             for (int i = 0; i < tg.NumberOfTeams; i++)
             {
-                List<Member> team = new List<Member>();
-                teams.Add(team);
+                teams.Add(new List<Member>());
             }
+
             tg.Members = tg.Members.OrderBy(x => x.Age).ToList();
-            for (int i = 0; i < tg.Members.Count; i++)
+
+            bool forward = true;
+            int teamIndex = 0;
+
+            foreach (var member in tg.Members)
             {
-                teams[i % tg.NumberOfTeams].Add(tg.Members[i]);
+                teams[teamIndex].Add(member);
+
+                if (forward)
+                {
+                    teamIndex++;
+                    if (teamIndex == tg.NumberOfTeams)
+                    {
+                        forward = false;
+                        teamIndex = tg.NumberOfTeams - 1;
+                    }
+                }
+                else
+                {
+                    teamIndex--;
+                    if (teamIndex < 0)
+                    {
+                        forward = true;
+                        teamIndex = 0;
+                    }
+                }
             }
+
             return teams;
         }
     }
