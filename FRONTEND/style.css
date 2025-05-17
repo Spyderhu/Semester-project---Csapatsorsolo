@@ -23,6 +23,16 @@ body {
     gap: 10px;
 }
 
+#createBtn{
+    background-color: grey; 
+    color: black;
+}
+
+#createBtn:hover{
+    background-color: darkred;
+    color: white;
+}
+
 #addBtn{
     background-color: grey;
     color: black;
