@@ -76,15 +76,6 @@ function validateForm(){
     }
 }
 
-function random_bg_color() {
-    var x = Math.floor(Math.random() * 256);
-    var y = Math.floor(Math.random() * 256);
-    var z = Math.floor(Math.random() * 256);
-    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
-    
-    return bgColor
-}
-
 function createCard(teamName, teamMembers){
     let cardDiv = document.createElement("div")
     let cardHeader = document.createElement("div")
@@ -92,7 +83,8 @@ function createCard(teamName, teamMembers){
 
     cardDiv.classList.add("card")
     cardDiv.style.flexBasis = "18rem"
-    cardDiv.style.backgroundColor = random_bg_color()
+    cardDiv.style.backgroundColor = "darkred"
+    cardDiv.style.color = "white"
 
 
     cardHeader.classList.add("card-header")
